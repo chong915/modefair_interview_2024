@@ -242,7 +242,7 @@ class CombinedSavingsAlgorithm:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Optimize vehicle routes using the Combined Savings Algorithm")
-    parser.add_argument('--pause-interval', type=float, default=1, help="Pause interval for plotting each route merge")
+    parser.add_argument('--pause-interval', type=float, default=1.0, help="Pause interval for plotting each route merge")
     args = parser.parse_args()
 
     # Run the plotting function

@@ -110,7 +110,7 @@ To run the FSMVRP solver with various arguments, follow these steps:
 6. Run the `main.py` script with the desired arguments:
 
 ### Arguments
-- `--pause-interval`: Set the pause interval for plotting each route merge (default is `0.1` seconds).
+- `--pause-interval`: Set the pause interval for plotting each route merge (default is `1.0` seconds).
 
 
 ### Example Usage
