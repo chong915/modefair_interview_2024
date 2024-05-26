@@ -3,6 +3,7 @@ from typing import Dict
 from utils.location_utils import CustomerLocation
 from utils.vehicle_utils import VehicleType
 
+
 def plot_locations(locations: Dict[str, CustomerLocation]) -> None:
     """
     Plots the initial locations of customers and depot.
@@ -10,7 +11,7 @@ def plot_locations(locations: Dict[str, CustomerLocation]) -> None:
     Args:
     locations (dict): A dictionary of CustomerLocation objects.
     """
-    plt.figure(figsize=(10, 8))
+    plt.figure(figsize=(10, 5))
     for loc in locations.values():
         plt.scatter(loc.latitude, loc.longitude, s=100)
         plt.text(loc.latitude, loc.longitude, f'{loc.customer_id} ({loc.demand})', fontsize=12, ha='right')
@@ -34,7 +35,7 @@ def plot_optimized_routes(routes: Dict[tuple, Dict[str, list]], vehicle_types_di
     vehicle_types_dict (dict): Dictionary containing VehicleType objects.
     locations (dict): Dictionary containing CustomerLocation objects.
     """
-    plt.figure(figsize=(10, 8))
+    plt.figure(figsize=(10, 5))
     vehicle_colors = {vehicle: color for vehicle, color in zip(vehicle_types_dict.keys(), ['b', 'g', 'r', 'c', 'm', 'y', 'k'])}
 
     # Plot depot
