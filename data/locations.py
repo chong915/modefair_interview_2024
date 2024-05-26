@@ -12,5 +12,4 @@ locations = {
     "8": CustomerLocation("8", 4.3818, 114.2034, 6),
     "9": CustomerLocation("9", 4.4935, 114.1828, 5),
     "10": CustomerLocation("10", 4.4932, 114.1322, 8),
-    # "11": CustomerLocation("11", 4.5932, 113.1322, 3),
 }
