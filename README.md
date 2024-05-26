@@ -90,13 +90,24 @@ University of Maryland at College Park, College Park, MD 20742, U.S.A.
 
 To run the FSMVRP solver with various arguments, follow these steps:
 
-1. Ensure you have Python installed on your system. (I'm using Python 3.11.6)
-2. Install the required packages using the following command:
+1. Clone this repository
+    ```bash
+    git clone [github_repository_link]
+    ```
+2. Ensure you have Python installed on your system. (I'm using Python 3.11.6)
+3. Create virtual environment
+    ```bash
+    python -m venv [your_preferred_environment_name]
+    ```
+4. Activate the virtual environment
+    ```bash
+    source [your_preferred_environment_name]/bin/activate
+    ```
+5. Install the required packages using the following command:
     ```bash
     pip install -r requirements.txt
     ```
-
-3. Run the `main.py` script with the desired arguments:
+6. Run the `main.py` script with the desired arguments:
 
 ### Arguments
 - `--pause-interval`: Set the pause interval for plotting each route merge (default is `0.1` seconds).
