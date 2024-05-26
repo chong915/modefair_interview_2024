@@ -4,18 +4,19 @@
 ```
 project/
 │
+├── data/
+│ ├── locations.py
+│ └── vehicle_types.py
+│
 ├── utils/
 │ ├── init.py
 │ ├── plot_utils.py
 │ ├── distance_utils.py
 │ └── vehicle_utils.py
 │
-├── data/
-│ ├── locations.py
-│ └── vehicle_types.py
-│
+├──.gitignore
+├── README.md 
 ├── main.py
-├── README.md
 └── requirements.txt
 ```
 
@@ -57,7 +58,7 @@ Your task is to develop an algorithm or program that attempts to find the best r
 - Vehicle travel distance is calculated using the Euclidean distance formula:
 $${Distance(km)} = 100 \times \sqrt{(\text{Longitude}_2 - \text{Longitude}_1)^2 + (\text{Latitude}_2 - \text{Latitude}_1)^2}$$
 
-### Proposed Algorithm
+## Proposed Algorithm
 
 I'm using the Combined Savings (CS) algorithm to solve the Fleet Size and Mix Vehicle Routing Problem (FSMVRP). This algorithm is an extension of the Clarke and Wright Savings algorithm, adapted to consider the varying costs and capacities of different vehicle types. Here's a brief description of how it works:
 
@@ -76,7 +77,7 @@ I'm using the Combined Savings (CS) algorithm to solve the Fleet Size and Mix Ve
 5. **Optimization**:
    - The process continues until no more feasible combinations can be made that reduce the overall cost.
 
-### Paper Reference
+## Paper Reference
 
 The methodology implemented in this project is based on the paper:
 
