@@ -103,10 +103,9 @@ To run the FSMVRP solver with various arguments, follow these steps:
 
 
 ### Example Usage
-
-To plot the initial locations:
 ```bash
 python main.py --pause-interval 1
+```
 
 ### Example Input Data
 `data/locations.py`
