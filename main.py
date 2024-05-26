@@ -113,15 +113,43 @@ class CombinedSavingsAlgorithm:
         n_customers = len(self.locations) - 1  # excluding depot
         savings = []
 
+
+        # Print and plot initial routes
+        print("Initial Routes:")
+        for key, value in self.routes.items():
+            route = value["route"]
+            vehicle = value["vehicle"]
+            distance = self.calculate_route_distance(route)
+            print(f"Route: Depot -> {route} -> Depot, Vehicle: {vehicle.name}, Distance: {distance:.3f} km")
+        # Plot initial routes
+        self.plot_initial_routes()
+
         # Calculate savings for combining routes
         print("Calculating savings for combining routes:")
         for i in range(n_customers):
             for j in range(i + 1, n_customers):
-                savings_ij = self.cost_matrix[0][i + 1] + self.cost_matrix[0][j + 1] - self.cost_matrix[i + 1][j + 1]
-                savings.append((savings_ij, i + 1, j + 1))
+                # Find the routes containing customers i and j
+                route_i_key = next((key for key, value in self.routes.items() if i + 1 in value["route"]), None)
+                route_j_key = next((key for key, value in self.routes.items() if j + 1 in value["route"]), None)
+                if route_i_key and route_j_key and route_i_key != route_j_key:
+                    route_i_vehicle = self.routes[route_i_key]["vehicle"]
+                    route_j_vehicle = self.routes[route_j_key]["vehicle"]
+                    
+                    # Calculate the savings, taking into account the cost per kilometer of the vehicle
+                    savings_ij = (
+                        self.cost_matrix[0][i + 1] * route_i_vehicle.cost_per_km +
+                        self.cost_matrix[0][j + 1] * route_j_vehicle.cost_per_km -
+                        self.cost_matrix[i + 1][j + 1] * route_i_vehicle.cost_per_km
+                    )
+                    savings.append((savings_ij, i + 1, j + 1))
 
         # Sort savings in descending order
         savings.sort(reverse=True, key=lambda x: x[0])
+
+        # Print sorted savings
+        print("\nSorted Savings:")
+        for saving in savings:
+            print(f"Routes {saving[1]} and {saving[2]}: {saving[0]:.3f} RM")
 
         # Combine routes based on savings
         print("\nCombining routes based on savings:")
@@ -167,12 +195,47 @@ class CombinedSavingsAlgorithm:
                     print(f"No cost reduction achieved by merging routes {route_i} and {route_j}.")
             print("----------------------------------------------------------")
 
+    def plot_initial_routes(self) -> None:
+        """
+        Plots the initial routes before the optimization process begins.
+        """
+        plt.figure(figsize=(10, 5))
+        vehicle_colors = {vehicle: color for vehicle, color in zip(self.vehicle_types.keys(), ['b', 'g', 'r', 'c', 'm', 'y', 'k'])}
+
+        # Plot depot
+        depot = self.locations["Depot"]
+        plt.scatter(depot.latitude, depot.longitude, c='red', s=100, label='Depot')
+
+        # Keep track of plotted vehicle types for legend
+        plotted_vehicle_types = set()
+
+        for route_info in self.routes.values():
+            route = route_info["route"]
+            vehicle = route_info["vehicle"].name
+            color = vehicle_colors[vehicle]
+            route_points = [self.locations[self.location_keys[stop]] for stop in route]
+            latitudes = [depot.latitude] + [point.latitude for point in route_points] + [depot.latitude]
+            longitudes = [depot.longitude] + [point.longitude for point in route_points] + [depot.longitude]
+
+            if vehicle not in plotted_vehicle_types:
+                plt.plot(latitudes, longitudes, color, marker='o', label=vehicle)
+                plotted_vehicle_types.add(vehicle)
+            else:
+                plt.plot(latitudes, longitudes, color, marker='o')
+
+        plt.title('Initial Routes')
+        plt.xlabel('Latitude')
+        plt.ylabel('Longitude')
+        plt.legend()
+        plt.grid()
+        plt.show()
+
     def plot_current_routes(self) -> None:
         """
         Plots the current state of routes during the optimization process.
         """
         self.merge_count += 1
-        plt.figure(figsize=(10, 8))
+        plt.figure(figsize=(10, 5))
         vehicle_colors = {vehicle: color for vehicle, color in zip(self.vehicle_types.keys(), ['b', 'g', 'r', 'c', 'm', 'y', 'k'])}
 
         # Plot depot
