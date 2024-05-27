@@ -154,7 +154,7 @@ class CombinedSavingsAlgorithm:
         # Combine routes based on savings
         print("\nCombining routes based on savings:")
         for saving, i, j in savings:
-            print(f"\nCurrently processing savings for combining routes {i} and {j} with saving {saving:.3f} km...")
+            print(f"\nCurrently processing savings for combining routes {i} and {j} with saving RM{saving:.3f}...")
             print("----------------------------------------------------------")
             # Find the routes containing customers i and j
             route_i_key = next((key for key, value in self.routes.items() if i in value["route"]), None)
@@ -176,12 +176,15 @@ class CombinedSavingsAlgorithm:
                 original_distance_j = self.calculate_route_distance(route_j)
                 original_cost = (original_distance_i * self.routes[route_i_key]["vehicle"].cost_per_km +
                                  original_distance_j * self.routes[route_j_key]["vehicle"].cost_per_km)
-                new_cost = self.calculate_route_distance(best_route) * combined_vehicle.cost_per_km
+                new_route_distance = self.calculate_route_distance(best_route)
+                new_cost = new_route_distance * combined_vehicle.cost_per_km
 
                 print(f"Best merged route: {best_route}")
                 print(f"Original distance for route {route_i}: {original_distance_i:.3f} km")
                 print(f"Original distance for route {route_j}: {original_distance_j:.3f} km")
                 print(f"Original cost for routes {route_i} and {route_j}: RM {original_cost:.2f}")
+
+                print(f"Combined route distance : {new_route_distance:.3f} km")
                 print(f"New cost for merged route {best_route}: RM {new_cost:.2f}")
 
                 if new_cost < original_cost:
