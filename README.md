@@ -99,15 +99,19 @@ To run the FSMVRP solver with various arguments, follow these steps:
     ```bash
     python -m venv [your_preferred_environment_name]
     ```
-4. Activate the virtual environment
+4. Change directory
+    ```bash
+    cd ./modefair_interview_2024
+    ```
+5. Activate the virtual environment
     ```bash
     source [your_preferred_environment_name]/bin/activate
     ```
-5. Install the required packages using the following command:
+6. Install the required packages using the following command:
     ```bash
     pip install -r requirements.txt
     ```
-6. Run the `main.py` script with the desired arguments:
+7. Run the `main.py` script with the desired arguments:
 
 ### Arguments
 - `--pause-interval`: Set the pause interval for plotting each route merge (default is `1.0` seconds).
