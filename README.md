@@ -160,7 +160,7 @@ vehicle_types = {
 
 
 ## Video Demonstration
-[Video Presentation](https://drive.google.com/file/d/1KXjmRJ7I-8FFQf2BpEe9cC7FdnEzGBbH/view?usp=sharing)
+[Video Presentation link](https://drive.google.com/file/d/1KXjmRJ7I-8FFQf2BpEe9cC7FdnEzGBbH/view?usp=sharing)
 
 ## Documentation Slides
-[Documentation Slides](https://docs.google.com/presentation/d/1k6zYoAHdvC7dTQhXHRHdEfGrvQOe8Jk7lc8W8RZqgrY/edit?usp=sharing)
+[Documentation Slides link](https://docs.google.com/presentation/d/1k6zYoAHdvC7dTQhXHRHdEfGrvQOe8Jk7lc8W8RZqgrY/edit?usp=sharing)
