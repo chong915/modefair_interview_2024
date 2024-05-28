@@ -1,5 +1,11 @@
 # ModeFair Take Home Assessment
 
+## Video Demonstration
+[Video Presentation link](https://drive.google.com/file/d/1KXjmRJ7I-8FFQf2BpEe9cC7FdnEzGBbH/view?usp=sharing)
+
+## Documentation Slides
+[Documentation Slides link](https://docs.google.com/presentation/d/1k6zYoAHdvC7dTQhXHRHdEfGrvQOe8Jk7lc8W8RZqgrY/edit?usp=sharing)
+
 ## Directory Structure
 ```
 project/
@@ -161,10 +167,3 @@ vehicle_types = {
     "Type B": VehicleType("Type B", 30, 1.5)  # Large vehicle
 }
 ```
-
-
-## Video Demonstration
-[Video Presentation link](https://drive.google.com/file/d/1KXjmRJ7I-8FFQf2BpEe9cC7FdnEzGBbH/view?usp=sharing)
-
-## Documentation Slides
-[Documentation Slides link](https://docs.google.com/presentation/d/1k6zYoAHdvC7dTQhXHRHdEfGrvQOe8Jk7lc8W8RZqgrY/edit?usp=sharing)
